@@ -5,9 +5,9 @@
 ** Fun way to talk about code smells or bad code that crept into a code base
 * Bugs to highlight with code
 ** [X] Database connections opened and closed in different places
-** [ ] File handles opened and closed in different places
+** [X] File handles opened and closed in different places
 ** [ ] not disposing of objects properly (may be covered in the two above)
-** [ ] Nested FOR loops crossing the indexes in multidimensional arrays
+** [X] Nested FOR loops crossing the indexes in multidimensional arrays
 ** [ ] creating objects inside non-factory methods
 ** [ ] Async code that isn't actually async
 ** [X] pulling list of files to work and then deleting with wildcards

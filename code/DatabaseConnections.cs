@@ -1,3 +1,4 @@
+/*
 public DbConnection _connection;
 
 public bool OpenDatabase(string connString)
@@ -28,3 +29,4 @@ public void WorkWithData()
 
     var isDatabaseClosed = CloseDatabase();
 }
+*/
