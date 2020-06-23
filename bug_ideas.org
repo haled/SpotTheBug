@@ -4,14 +4,20 @@
 ** This can be a fun exercise to highlight design principles
 ** Fun way to talk about code smells or bad code that crept into a code base
 * Bugs to highlight with code
-** [X] Database connections opened and closed in different places
-** [X] File handles opened and closed in different places
-** [ ] not disposing of objects properly (may be covered in the two above)
-** [X] Nested FOR loops crossing the indexes in multidimensional arrays
-** [ ] creating objects inside non-factory methods
-** [ ] Async code that isn't actually async
-** [X] pulling list of files to work and then deleting with wildcards
-** [ ] Possibly creating too many string instances (this is more of a performance issue)
-** [ ] spreading one responsibility over many objects
-** [ ] including too many responsibilities in a single object
+** Bugs
+*** [X] Database connections opened and closed in different places
+*** [X] File handles opened and closed in different places
+*** [X] Nested FOR loops crossing the indexes in multidimensional arrays
+*** [X] pulling list of files to work and then deleting with wildcards
+** Performance land mines
+*** [X] not disposing of objects properly
+**** May be able to use DB connections or file handle code
+*** [X] Possibly creating too many string instances (this is more of a performance issue)
+*** [ ] Async code that isn't actually async
+** Design flaws
+*** [X] creating objects inside non-factory methods
+
+*** [X] spreading one responsibility over many objects
+**** This is shown with extra code in ObjectCreation.cs
+*** [X] including too many responsibilities in a single object
 * 
