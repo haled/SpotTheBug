@@ -29,9 +29,10 @@ namespace FileHandles
             return true;
         }
     }
-    /*
+
     public class Program
     {
+        // Buggy
 	public static void Main(string[] args)
 	{
 	    var dataWriter = new DataWriter();
@@ -47,6 +48,24 @@ namespace FileHandles
 
 	    var result = dataWriter.WriteData(writer, lines);
 	}
+
+        // Good
+        public static void Main(string[] args)
+        {
+            using(var dataWriter = new DataWriter())
+            {
+                var writer = dataWriter.OpenFile("data.txt");
+
+                var lines = new List<string>
+                {
+                    "This is the first string.",
+                    "Another string that needs writing.",
+                    "Yet another string for writing."
+                };
+
+                var result = dataWriter.WriteData(writer, lines);
+            }
+        }
     }
-    */
+
 }

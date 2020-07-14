@@ -1,4 +1,3 @@
-/*
 public DbConnection _connection;
 
 public bool OpenDatabase(string connString)
@@ -29,4 +28,16 @@ public void WorkWithData()
 
     var isDatabaseClosed = CloseDatabase();
 }
-*/
+
+// Good code
+public void WorkWithData()
+{
+    using(var conn = new SqlConnection(_connString))
+    {
+        conn.Open();
+
+        // Do database work here
+
+        conn.Close();
+    }
+}
