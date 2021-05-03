@@ -21,22 +21,6 @@ namespace SpotTheBug
 
     public class Accountant
     {
-	public decimal DetermineInterestEarned(decimal accountBalance, decimal rate)
-	{
-	    decimal interestEarned = 0.0;
-	    
-	    if(accountBalance > 0 && rate > 0)
-	    {
-		var account = new InterestBearingAccount(accountBalance, rate);
-		interestEarned = account.CalculateInterest();
-	    }
-
-	    return interestEarned;
-	}
-    }
-
-    public class Accountant2
-    {
 	public decimal DetermineInterestEarned(InterestBearingAccount account)
 	{
 	    return account.CalculateInterest();
@@ -47,8 +31,9 @@ namespace SpotTheBug
     {
 	public static void Main(string[] args)
 	{
-	    var moneyTracker = new Accountant2();
-	    var interestIncome = moneyTracker.DetermineInterestEarned(arg[0], arg[1]);
+	    var moneyTracker = new Accountant();
+	    var account = new InterestBearingAccount(arg[0], arg[1]);  // should be done in factory
+	    var interestIncome = moneyTracker.DetermineInterestEarned(account);
 	    Console.WriteLine("The interest earned is {0}.", interestIncome);
 	}
     }

@@ -16,14 +16,28 @@ namespace SpotTheBug
 	    return !string.IsNullOrEmpty(PartNumber);
 	}
 
-	public void SendOrderConfirmation(string emailAddress)
+	public bool Submit()
+        {
+            // Do Something
+        }
+
+        public void Cancel()
+        {
+            // Do Something
+        }
+    }
+
+    public static class ConfirmationManager
+    {
+	private static SmtpClient _client = new SmtpClient("smtp.company.com");
+
+	public static void SendOrderConfirmation(string emailAddress, string partNum)
 	{
-	    SmtpClient client = new SmtpClient("smtp.company.com");
 	    MailMessage message = new MailMessage();
 	    message.To.Add(emailAddress);
 	    message.From("customersupport@company.com");
-	    message.Body("Thanks for your order. We are shipping item {0} now.", PartNumber);
-	    client.Send(message);
+	    message.Body("Thanks for your order. We are shipping item {0} now.", partNum);
+	    _client.Send(message);
 	}
     }
 
@@ -38,8 +52,14 @@ namespace SpotTheBug
 	    if(newOrder.IsValid())
 	    {
 	        Console.WriteLine("The order amount is {0}.", newOrder.CalculateOrderAmount());
+                newOrder.Submit();
+                ConfirmationManager.SendOrderConfirmation(args[0]);
 	    }
-	    newOrder.SendOrderConfirmation(args[0]);
+            else
+            {
+                Console.WriteLine("The order was canceled.");
+                newOrder.Cancel();
+            }
 	}
     }
 }
